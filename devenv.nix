@@ -24,7 +24,20 @@
   # processes.cargo-watch.exec = "cargo-watch";
 
   # https://devenv.sh/services/
-  services.postgres.enable = true;
+  services.postgres = {
+    enable = true;
+    package = pkgs.postgresql_15;
+    initialDatabases = [{ 
+      name = "mydb";
+      user = "rose";}];
+
+    listen_addresses = "127.0.0.1"; 
+    
+    extensions = extensions: [
+      extensions.postgis
+      extensions.timescaledb
+    ];
+  };
 
   # https://devenv.sh/scripts/
   # scripts.hello.exec = ''
