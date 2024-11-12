@@ -9,7 +9,8 @@ print(np.add(3,4))
 try:
     connection = psycopg2.connect(
         dbname="mydb",
-        user="rose",
+        user="postgres",
+        password="testing",
         host="localhost"
     )
 
@@ -17,3 +18,13 @@ try:
     
 except Exception as e:
     print(f"An error occurred: {e}")
+
+dbname = 'testing-db'
+# cursor.execute("CREATE TABLE funsies (ID INT PRIMARY KEY, ITEM TEXT, FUN_FACTOR INT)")
+# cursor.execute("INSERT INTO funsies (ID, ITEM, FUN_FACTOR) VALUES (1, 'rollerblade', 8 )")
+
+# connection.commit()
+
+rows = cursor.execute("SELECT * FROM funsies")
+
+print(rows)

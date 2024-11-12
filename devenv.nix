@@ -26,14 +26,19 @@
   # https://devenv.sh/services/
   services.postgres = {
     enable = true;
+    createDatabase = true;
     package = pkgs.postgresql_15;
     initialDatabases = [{ 
       name = "mydb";
+      schema = ./mydb.sql;
+      pass = "testing";
       user = "rose";}];
 
     listen_addresses = "127.0.0.1"; 
+    initialScript = "CREATE DATABASE mydb";
     
     extensions = extensions: [
+      extensions.pg_cron
       extensions.postgis
       extensions.timescaledb
     ];
