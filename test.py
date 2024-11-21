@@ -19,13 +19,13 @@ try:
 except Exception as e:
     print(f"An error occurred: {e}")
 
-dbname = 'testing-db'
+dbname = 'funsies'
 # cursor.execute("CREATE TABLE funsies (ID INT PRIMARY KEY, ITEM TEXT, FUN_FACTOR INT)")
 # cursor.execute("INSERT INTO funsies (ID, ITEM, FUN_FACTOR) VALUES (1, 'rollerblade', 8 )")
 # cursor.execute("INSERT INTO funsies (ID, ITEM, FUN_FACTOR) VALUES (2, 'skate', 4 )")
 
 # connection.commit()
 
-cursor.execute("SELECT * FROM funsies")
+cursor.execute(f"SELECT * FROM {dbname}")
 
 print(cursor.fetchall())

@@ -20,6 +20,7 @@ def create_list(list_name: str):
     connection, cursor = connect()
     try:
         cursor.execute(f"CREATE TABLE {list_name} (ID INT PRIMARY KEY, ITEM TEXT)")
+        print("List Created")
     
     except:
         print("This list was already created")
@@ -27,41 +28,40 @@ def create_list(list_name: str):
     connection.commit()
     connection.close()
 
-    print("List Created")
 
 def add_item(db, id, item):
     connection, cursor = connect()   
 
     try:  
         cursor.execute(f"INSERT INTO {db} (ID, ITEM) VALUES ({id}, {item})")
+        print("Added")
+    
     except:
         print(f"This item was already added")
     
     connection.commit()
     connection.close()
 
-    print("Added")
-
 def remove_item(db, id):
     connection, cursor = connect()
 
     try:  
         cursor.execute(f"DELETE FROM {db} WHERE ID={id}")
+        print("Removed")
+        
     except:
         print(f"This item was already removed")
 
     connection.commit()
     connection.close()
 
-    print("Removed")
-
 def view(db):
     connection, cursor = connect()
 
     cursor.execute(f"SELECT * FROM {db}")
-        
-    connection.commit()
-    connection.close()
 
-    print("View")
+    # print("View here your list")
+    print(cursor.fetchall())
+
+    connection.close()
 
