@@ -22,9 +22,10 @@ except Exception as e:
 dbname = 'testing-db'
 # cursor.execute("CREATE TABLE funsies (ID INT PRIMARY KEY, ITEM TEXT, FUN_FACTOR INT)")
 # cursor.execute("INSERT INTO funsies (ID, ITEM, FUN_FACTOR) VALUES (1, 'rollerblade', 8 )")
+# cursor.execute("INSERT INTO funsies (ID, ITEM, FUN_FACTOR) VALUES (2, 'skate', 4 )")
 
 # connection.commit()
 
-rows = cursor.execute("SELECT * FROM funsies")
+cursor.execute("SELECT * FROM funsies")
 
-print(rows)
+print(cursor.fetchall())
